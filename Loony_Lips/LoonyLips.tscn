@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://LoonyLips.gd" type="Script" id=1]
 [ext_resource path="res://StoryText.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gfx/Feltpen.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://gfx/blue_button11.png" type="Texture" id=5]
 [ext_resource path="res://gfx/blue_button12.png" type="Texture" id=6]
+[ext_resource path="res://Story.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 37
@@ -16,6 +17,10 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
 font_data = ExtResource( 4 )
 
 [node name="LoonyLips" type="Control"]
@@ -59,14 +64,14 @@ size_flags_horizontal = 3
 custom_constants/separation = 25
 
 [node name="LineInput" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 881.0
+margin_right = 766.0
 margin_bottom = 63.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 906.0
-margin_right = 976.0
+[node name="okTextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 791.0
+margin_right = 861.0
 margin_bottom = 63.0
 rect_min_size = Vector2( 70, 63 )
 size_flags_vertical = 3
@@ -74,12 +79,50 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 expand = true
 
-[node name="okLabel" type="Label" parent="VBoxContainer/HBoxContainer/TextureButton"]
+[node name="okLabel" type="Label" parent="VBoxContainer/HBoxContainer/okTextureButton"]
 margin_right = 69.0
 margin_bottom = 63.0
 custom_fonts/font = SubResource( 3 )
 text = "OK"
 valign = 1
 
+[node name="resetButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 886.0
+margin_right = 976.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 90, 63 )
+size_flags_vertical = 3
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/resetButton"]
+margin_right = 90.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 90, 63 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 4 )
+text = "RESET"
+valign = 1
+
+[node name="StoryBook" type="Node" parent="."]
+
+[node name="Story0" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "A", "B" )
+story = "There are two letters: %s and %s "
+
+[node name="Story1" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "1", "5" )
+story = "There are two numbers: %s and %s "
+
+[node name="Story2" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "3", "six" )
+story = "There are numbers and letters: %s and %s "
+
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineInput" to="." method="_on_LineInput_text_entered"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/okTextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/resetButton" to="." method="_on_resetButton_pressed"]
