@@ -14,6 +14,10 @@ config/name="Hoppy Hop"
 run/main_scene="res://Levels/Level1.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+enable_audio_input=true
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -41,6 +45,7 @@ JUMP={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Terrain"
 2d_physics/layer_3="Hazards"
+2d_physics/layer_4="Items"
 
 [physics]
 

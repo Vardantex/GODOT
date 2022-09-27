@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
-var lives = 3
+#Create a boost constant 
+const boost_multiplier = 3
+
+
 
 #Create a game over const
 const WORLD_LIMIT = 3000
@@ -22,22 +25,24 @@ const UP = Vector2(0,-1)
 const JUMP_SPEED = 2500
 
 #Runs every frame
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	
 	apply_gravity()
-	#Check if player entity is out of bounds
-	if position.y > WORLD_LIMIT:
-		end_game()
+	
 	#Create the controls
 	jump()
 	movement()
 	animate()
 	
 	#Enable movement for entity to game Vector
+# warning-ignore:return_value_discarded
 	move_and_slide(motion, UP)
 
 #Create a function to apply gravity physics
 func apply_gravity():
+	if position.y > WORLD_LIMIT:
+		get_tree().call_group("GameState", "end_game")
 	if is_on_floor():
 		motion.y = 0
 	elif is_on_ceiling():
@@ -49,7 +54,9 @@ func apply_gravity():
 func jump():
 	if Input.is_action_just_pressed("JUMP") and is_on_floor():
 		motion.y -= JUMP_SPEED
-
+#Play jumping sound effect 
+		$AudioStreamPlayer.stream = load("res://SFX/jump1.ogg")
+		$AudioStreamPlayer.play()
 	
 func movement():
 	if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"): 
@@ -64,13 +71,18 @@ func animate():
 	#Call the animation node with a signal 
 	emit_signal("animate", motion)
 
-func end_game():
-	get_tree().change_scene("res://Levels/GameOver.tscn")
 
 #Create a damage effect 
 func hurt():
 	motion.y -= JUMP_SPEED
-	lives -=1
-	if lives <=0:
-		end_game()
+#	if lives <=0:
+#		end_game()
+	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg")
+	$AudioStreamPlayer.play()
 
+func boost():
+	motion.y -= JUMP_SPEED * boost_multiplier
+	#For better quality, use the yield 
+	position.y -= 1
+	yield(get_tree(), "idle_frame") 
+	
