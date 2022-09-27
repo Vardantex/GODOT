@@ -16,6 +16,10 @@ Delta
 -Time in seconds between frames
 -Makes things not frame dependant
 
+Layer
+-Set an object to a specific layer to exist
+Mask
+-Set which layer to interact with
 
 
 

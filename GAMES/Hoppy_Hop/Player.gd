@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+var lives = 3
+
+#Create a game over const
+const WORLD_LIMIT = 3000
+
 #Movement across the screen
 var motion = Vector2(0,0)
 
@@ -10,7 +15,7 @@ signal animate
 const SPEED = 550
 const GRAVITY = 250
 
-#Define uP direction for vector
+#Define uP direction for vector to jump
 const UP = Vector2(0,-1)
 
 #Create a Jump Speed 
@@ -20,7 +25,9 @@ const JUMP_SPEED = 2500
 func _physics_process(delta):
 	
 	apply_gravity()
-	
+	#Check if player entity is out of bounds
+	if position.y > WORLD_LIMIT:
+		end_game()
 	#Create the controls
 	jump()
 	movement()
@@ -31,10 +38,13 @@ func _physics_process(delta):
 
 #Create a function to apply gravity physics
 func apply_gravity():
-	if ! is_on_floor():
-		motion.y += GRAVITY
-	else:
+	if is_on_floor():
 		motion.y = 0
+	elif is_on_ceiling():
+		#Move the character down
+		motion.y = 1
+	else:
+		motion.y += GRAVITY
 
 func jump():
 	if Input.is_action_just_pressed("JUMP") and is_on_floor():
@@ -54,15 +64,13 @@ func animate():
 	#Call the animation node with a signal 
 	emit_signal("animate", motion)
 
-#	if motion.y < 0:
-#		$PlayerAnimation.play("jump")
-#	elif motion.x > 0:
-#		$PlayerAnimation.play("walk")
-#		$PlayerAnimation.flip_h = false
-#	elif motion.x < 0:
-#		$PlayerAnimation.play("walk")
-#		$PlayerAnimation.flip_h = true
-#	else:
-#		$PlayerAnimation.play("idle")
+func end_game():
+	get_tree().change_scene("res://Levels/GameOver.tscn")
 
+#Create a damage effect 
+func hurt():
+	motion.y -= JUMP_SPEED
+	lives -=1
+	if lives <=0:
+		end_game()
 
