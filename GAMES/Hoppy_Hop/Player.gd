@@ -65,6 +65,7 @@ func movement():
 		motion.x = SPEED
 	else:
 		motion.x = 0
+#
 
 func animate():
 	

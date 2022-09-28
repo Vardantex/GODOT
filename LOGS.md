@@ -12,6 +12,9 @@ BUG FIXES:
 Animation:
 *Duplicating keys, auto set at active frame
 
+*Visibility Notifier
+-Can delete an object if off screen 
+
 *queue_free() = Remove a node from the game instead of hiding it
 
 RigidBody2d
