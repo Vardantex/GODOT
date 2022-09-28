@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 #Create a boost constant 
-const boost_multiplier = 3
+const boost_multiplier = 2.5
 
 
 
@@ -43,7 +43,7 @@ func _physics_process(delta):
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
 		get_tree().call_group("GameState", "end_game")
-	if is_on_floor():
+	if is_on_floor() and motion.y > 0:
 		motion.y = 0
 	elif is_on_ceiling():
 		#Move the character down
@@ -74,14 +74,14 @@ func animate():
 
 #Create a damage effect 
 func hurt():
-	motion.y -= JUMP_SPEED
+	motion.y = -JUMP_SPEED
 #	if lives <=0:
 #		end_game()
 	$AudioStreamPlayer.stream = load("res://SFX/pain.ogg")
 	$AudioStreamPlayer.play()
 
 func boost():
-	motion.y -= JUMP_SPEED * boost_multiplier
+	motion.y = -JUMP_SPEED * boost_multiplier
 	#For better quality, use the yield 
 	position.y -= 1
 	yield(get_tree(), "idle_frame") 

@@ -1,11 +1,18 @@
 extends Node2D
 
-var lives = 3
+var lives = 4
+
+var coins = 0
+
+var coin_goal = 10
+var coin_extra_life = 10
+
 
 const WORLD_LIMIT = 3000
 
 func _ready():
 	add_to_group("GameState")
+	update_GUI()
 	
 	#Check if player entity is out of bounds
 	if position.y > WORLD_LIMIT:
@@ -15,8 +22,31 @@ func _ready():
 func hurt():
 	lives -=1 
 	$Player.hurt()
+	update_GUI()
 	if lives <= 0:
 		end_game()
 
+
+func update_GUI():
+	#call the hurt group from the GUI scene with the method
+	#and pass the life value
+	get_tree().call_group("GUI", "update_GUI", lives, coins)
+
+
+func coin_up():
+	coins+= 1
+	#Call to the GUI group, link a method and pass coin value
+	update_GUI()
+	
+	var multi_coins = (coins % coin_goal) == 0
+	if multi_coins:
+		life_up()
+	
+
+func life_up():
+	lives += 1
+	update_GUI()
+	
+	
 func end_game():
 	get_tree().change_scene("res://Levels/GameOver.tscn")
