@@ -3,10 +3,13 @@ extends KinematicBody2D
 #Create a boost constant 
 const boost_multiplier = 2.5
 
+var test = 1
 
+func _ready():
+	print("TEST MESSAGE: This is Level", str(test))
 
 #Create a game over const
-const WORLD_LIMIT = 3000
+const WORLD_LIMIT = 9000
 
 #Movement across the screen
 var motion = Vector2(0,0)

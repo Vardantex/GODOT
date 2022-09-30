@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Hoppy Hop"
-run/main_scene="res://Levels/Level1.tscn"
+config/name="BUN BUN JUMPER"
+run/main_scene="res://Main_Menu.tscn"
 config/icon="res://icon.png"
 
 [audio]

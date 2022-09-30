@@ -1,5 +1,7 @@
 extends Node2D
 
+export var level_unlock = 1
+
 var lives = 4
 
 var coins = 0
@@ -8,7 +10,7 @@ var coin_goal = 10
 var coin_extra_life = 10
 
 
-const WORLD_LIMIT = 3000
+const WORLD_LIMIT = 9000
 
 func _ready():
 	add_to_group("GameState")
@@ -49,7 +51,9 @@ func life_up():
 	
 	
 func end_game():
+#	get_tree().call_group("GameOver", "getScene", level_unlock)
 	get_tree().change_scene("res://Levels/GameOver.tscn")
+	
 
 func win_game():
 	get_tree().change_scene("res://Levels/Victory.tscn")

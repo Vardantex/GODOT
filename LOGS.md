@@ -17,6 +17,9 @@ Animation:
 
 *queue_free() = Remove a node from the game instead of hiding it
 
+Area2D
+-Used for entities that trigger when touched
+
 RigidBody2d
 -Not controlled directly
 -Forces are applied to it

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://GFX/HUD/lifes.png" type="Texture" id=3]
 [ext_resource path="res://Levels/GameOver.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -10,8 +9,7 @@ size = 128
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
-outline_color = Color( 0.972549, 0.101961, 0.101961, 1 )
+size = 40
 font_data = ExtResource( 2 )
 
 [node name="GameOver" type="Control"]
@@ -31,9 +29,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer"]
 margin_left = 150.0
-margin_top = 132.0
+margin_top = 156.0
 margin_right = 874.0
-margin_bottom = 467.0
+margin_bottom = 444.0
 
 [node name="Label" type="Label" parent="TextureRect/CenterContainer/VBoxContainer"]
 margin_right = 724.0
@@ -42,26 +40,31 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Game Over"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
+[node name="RestartContainer" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
 margin_top = 168.0
 margin_right = 724.0
-margin_bottom = 335.0
+margin_bottom = 226.0
 alignment = 1
 
-[node name="Label" type="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 144.0
-margin_right = 523.0
-margin_bottom = 167.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_outline_modulate = Color( 0.886275, 0.431373, 0.431373, 1 )
+[node name="RestartButton" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/RestartContainer"]
+margin_left = 247.0
+margin_right = 476.0
+margin_bottom = 58.0
 custom_fonts/font = SubResource( 2 )
-text = "Try Again?
-"
+text = "Start Over"
 
-[node name="RestartButton" type="TextureButton" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 527.0
-margin_right = 579.0
-margin_bottom = 167.0
-texture_normal = ExtResource( 3 )
+[node name="QuitContainer" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
+margin_top = 230.0
+margin_right = 724.0
+margin_bottom = 288.0
+alignment = 1
 
-[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[node name="MainMenuButton" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/QuitContainer"]
+margin_left = 238.0
+margin_right = 486.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/RestartContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/QuitContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

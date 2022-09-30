@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=1]
+
+[node name="TileMap" type="TileMap"]
+scale = Vector2( 0.498582, 0.497877 )
+tile_set = ExtResource( 1 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -262145, -1610612736, 0, 65535, -1610612736, 0, 393215, -1610612736, 0, 524320, 0, 0, 524360, 0, 0, 589850, 0, 0, 589862, 0, 0, 589870, 0, 0, 589887, 0, 0, 655360, 0, 0, 655365, 0, 0, 655370, 0, 0, 655375, 0, 0, 655380, 0, 0, 655414, 0, 0, 917588, 0, 0, 1441866, 0, 0, 1507392, 0, 0, 1572905, 0, 0, 1572911, 0, 0, 1572917, 0, 0 )
