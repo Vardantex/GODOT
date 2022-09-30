@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Instructions.gd" type="Script" id=11]
 [ext_resource path="res://Recycle/ReturnButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=13]
+[ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -218,3 +220,9 @@ margin_left = -21.4686
 margin_top = -95.5236
 margin_right = -21.4686
 margin_bottom = -95.5236
+
+[node name="Main_Menu_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -30.588
+pitch_scale = 0.33
+script = ExtResource( 13 )

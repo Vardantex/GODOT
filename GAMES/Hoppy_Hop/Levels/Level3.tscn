@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/GameState.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://NPC/Spikeman.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://NPC/Cloud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=11]
+[ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=12]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource( 1 )
@@ -118,3 +120,10 @@ rotation = 3.14159
 position = Vector2( -124, 184 )
 
 [node name="GUI" parent="." instance=ExtResource( 9 )]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -30.588
+pitch_scale = 0.56
+autoplay = true
+script = ExtResource( 11 )

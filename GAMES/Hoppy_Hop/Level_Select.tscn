@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Recycle/TitleContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=3]
 [ext_resource path="res://Level_Select.gd" type="Script" id=4]
 [ext_resource path="res://Recycle/ReturnButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=6]
+[ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -83,6 +85,38 @@ margin_right = 40.0
 margin_bottom = 20.0
 text = "3"
 
+[node name="Level_Four_Container" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -172.112
+margin_top = -10.9615
+margin_right = -132.112
+margin_bottom = 9.95718
+rect_scale = Vector2( 2, 2 )
+
+[node name="Level_Four" type="Button" parent="Background/Level_Four_Container"]
+margin_right = 40.0
+margin_bottom = 20.0
+text = "4"
+
+[node name="Level_Four_Container2" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.6444
+margin_top = -10.9615
+margin_right = -14.6444
+margin_bottom = 9.95718
+rect_scale = Vector2( 2, 2 )
+
+[node name="Level_Four" type="Button" parent="Background/Level_Four_Container2"]
+margin_right = 198.0
+margin_bottom = 20.0
+text = "THERE IS ONLY 4 FOR NOW :("
+
 [node name="Return_Container" type="VBoxContainer" parent="Background"]
 visible = false
 anchor_left = 0.5
@@ -102,8 +136,16 @@ text = "Main Menu"
 
 [node name="ReturnButton" parent="." instance=ExtResource( 5 )]
 
+[node name="Main_Menu_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -30.588
+pitch_scale = 2.04
+script = ExtResource( 6 )
+
 [connection signal="pressed" from="Background/Level_One_Container/Level_One" to="." method="_on_Level_One_pressed"]
 [connection signal="pressed" from="Background/Level_Two_Container/Level_Two" to="." method="_on_Level_Two_pressed"]
+[connection signal="pressed" from="Background/Level_Three_Container/Level_Three" to="." method="_on_Level_Three_pressed"]
+[connection signal="pressed" from="Background/Level_Four_Container/Level_Four" to="." method="_on_Level_Four_pressed"]
 [connection signal="pressed" from="Background/Return_Container/Return_Button" to="." method="_on_Return_Button_pressed"]
 
 [editable path="Background/TitleContainer"]
