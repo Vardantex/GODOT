@@ -12,7 +12,7 @@ func _on_QuitButton_pressed():
 
 
 func _on_LevelButton_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Level_Select.tscn")
 
 func _on_InstructionButton_pressed():
 

@@ -320,5 +320,6 @@ anims/FakePlayer_Title = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
 [connection signal="pressed" from="Background/PlayContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Background/LevelContainer/LevelButton" to="." method="_on_LevelButton_pressed"]
 [connection signal="pressed" from="Background/InstructionContainer/InstructionButton" to="." method="_on_InstructionButton_pressed"]
 [connection signal="pressed" from="Background/QuitContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
