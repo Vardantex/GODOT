@@ -56,5 +56,8 @@ func end_game():
 	
 
 func win_game():
-	get_tree().change_scene("res://Levels/Victory.tscn")
+	if coins != 15:
+		get_tree().change_scene("res://Coin_Over.tscn")
+	else:
+		get_tree().change_scene("res://Levels/Victory.tscn")
 

@@ -12,15 +12,16 @@ margin_right = 746.0
 margin_right = 469.0
 text = "Victory"
 
-[node name="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer" index="1"]
+[node name="LevelContainer" parent="TextureRect/CenterContainer/VBoxContainer" index="1"]
 margin_right = 469.0
 
-[node name="Label" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_left = 20.0
-margin_right = 392.0
-text = "Restart?
-Next Level"
+[node name="RestartButton" parent="TextureRect/CenterContainer/VBoxContainer/LevelContainer" index="0"]
+margin_left = 106.0
+margin_right = 363.0
 
-[node name="RestartButton" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 396.0
-margin_right = 448.0
+[node name="QuitContainer" parent="TextureRect/CenterContainer/VBoxContainer" index="2"]
+margin_right = 469.0
+
+[node name="MainMenuButton" parent="TextureRect/CenterContainer/VBoxContainer/QuitContainer" index="0"]
+margin_left = 110.0
+margin_right = 358.0

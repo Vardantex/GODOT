@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://GFX/Items/bronze_1.png" type="Texture" id=9]
 [ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Instructions.gd" type="Script" id=11]
+[ext_resource path="res://Recycle/ReturnButton.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -47,12 +48,7 @@ margin_right = 358.113
 margin_bottom = 246.994
 text = "W"
 
-[node name="ReturnButton" type="Button" parent="Background"]
-margin_left = 17.8606
-margin_top = 12.7459
-margin_right = 61.8606
-margin_bottom = 32.7459
-text = "RETURN"
+[node name="ReturnButton" parent="Background" instance=ExtResource( 12 )]
 
 [node name="RedSprite" type="Sprite" parent="Background"]
 position = Vector2( 334.929, 273.597 )
@@ -222,5 +218,3 @@ margin_left = -21.4686
 margin_top = -95.5236
 margin_right = -21.4686
 margin_bottom = -95.5236
-
-[connection signal="pressed" from="Background/ReturnButton" to="." method="_on_ReturnButton_pressed"]

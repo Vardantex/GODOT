@@ -94,3 +94,5 @@ position = Vector2( -527, 1804 )
 
 [node name="Portal" parent="." instance=ExtResource( 9 )]
 position = Vector2( -1591, 3662 )
+
+[node name="GUI2" parent="." instance=ExtResource( 8 )]

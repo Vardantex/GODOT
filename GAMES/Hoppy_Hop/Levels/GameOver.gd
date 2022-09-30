@@ -10,7 +10,7 @@ func _ready():
 func _on_RestartButton_pressed():
 	#Get the level scene under tree 
 	pass
-	get_tree().change_scene("res://Levels/Level1.tscn")
+	get_tree().change_scene("res://Level_Select.tscn")
 
 func getScene(level):
 	var getRes = "res://Levels/Level"

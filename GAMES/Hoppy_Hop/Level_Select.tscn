@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Recycle/TitleContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=3]
 [ext_resource path="res://Level_Select.gd" type="Script" id=4]
+[ext_resource path="res://Recycle/ReturnButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -82,7 +83,27 @@ margin_right = 40.0
 margin_bottom = 20.0
 text = "3"
 
+[node name="Return_Container" type="VBoxContainer" parent="Background"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -482.904
+margin_top = -277.919
+margin_right = -442.904
+margin_bottom = -257.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="Return_Button" type="Button" parent="Background/Return_Container"]
+margin_right = 83.0
+margin_bottom = 20.0
+text = "Main Menu"
+
+[node name="ReturnButton" parent="." instance=ExtResource( 5 )]
+
 [connection signal="pressed" from="Background/Level_One_Container/Level_One" to="." method="_on_Level_One_pressed"]
 [connection signal="pressed" from="Background/Level_Two_Container/Level_Two" to="." method="_on_Level_Two_pressed"]
+[connection signal="pressed" from="Background/Return_Container/Return_Button" to="." method="_on_Return_Button_pressed"]
 
 [editable path="Background/TitleContainer"]
