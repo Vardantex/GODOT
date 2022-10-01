@@ -18,7 +18,7 @@ var motion = Vector2(0,0)
 signal animate
 
 #Create a constant movement speed
-const SPEED = 550
+const SPEED = 650
 const GRAVITY = 250
 
 #Define uP direction for vector to jump
