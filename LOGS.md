@@ -9,6 +9,38 @@ BUG FIXES:
 
 ]
 
+Static - Dont move 
+Rigidbody - Moved by forces, doesnt move itself, is moved
+Kinematicbody - Moves itself
+vehiclebody - inherits rigidbody
+
+
+remote: other players 
+sync: other players and me 
+
+
+
+[
+
+rpc = tcp
+unreliable = udp
+
+rpc("do_thing")
+rpc_id(int id, "do_thing)
+rpc_unreliable("do_thing")
+rpc_id_unreliable(int id, "do_thing)
+
+]
+
+
+*Static Body with a colision shape prevents things passing through
+
+Signals
+-Great for linking an event to another node
+
+Groups are broadcasts
+-get_tree().call_group()
+
 Animation:
 *Duplicating keys, auto set at active frame
 

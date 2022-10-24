@@ -127,3 +127,5 @@ position = Vector2( 1864.68, -394.817 )
 
 [node name="Portal" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1144.01, 1078.49 )
+
+[editable path="Player"]

@@ -22,7 +22,8 @@ scale = Vector2( 1, 6.75 )
 curve = SubResource( 1 )
 
 [node name="MobPathLocation" type="PathFollow2D" parent="MobPath"]
-rotation = 0.982794
+position = Vector2( 0, 106.667 )
+rotation = -0.0493457
 
 [node name="Mob" parent="MobPath/MobPathLocation" instance=ExtResource( 2 )]
 position = Vector2( 432.666, 3.05176e-05 )

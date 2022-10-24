@@ -71,6 +71,6 @@ margin_bottom = 40.0
 texture = ExtResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -13.983
+volume_db = -31.585
 
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
