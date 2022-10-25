@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/GameCamera.gd" type="Script" id=1]
+
+[node name="GameCamera" type="Camera2D"]
+position = Vector2( 0, -11 )
+current = true
+smoothing_enabled = true
+script = ExtResource( 1 )
+backgroundColor = Color( 0.298039, 0.627451, 0.729412, 1 )

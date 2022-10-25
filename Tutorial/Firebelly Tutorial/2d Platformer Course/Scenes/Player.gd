@@ -12,39 +12,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	resetMethod()
-	
-	var moveVector = Vector2.ZERO
-	
-	#<pve char
-	moveHorizontal(moveVector, delta)
-	
-	#Move char upwards
-	moveVertical(moveVector, delta)
-
-
-func moveVertical(moveVector, delta):
-#Make character jump properly
-	if (Input.is_action_just_pressed("WASD_UP")):
-		moveVector.y = -1
-	else:
-		moveVector.y = 0
-	
-	if (moveVector.y < 0 && is_on_floor()):
-		velocity.y = moveVector.y * jumpSpeed
-	
-	if (velocity.y < 0 and not Input.is_action_pressed("WASD_UP")):
-		#Apply enhanved gravity if player hold jump
-		velocity.y += gravity * jumpTermMultiplier *delta
-	else:
-		#Apply normal gravity on character
-		velocity.y += gravity * delta
-	
-	#move and slide ( x, y)
-	velocity = move_and_slide(velocity, Vector2.UP)
-	
-
-func moveHorizontal(moveVector, delta):
-	moveVector.x = Input.get_action_strength("WASD_RIGHT") - Input.get_action_strength("WASD_LEFT")
+	updateAnimation()
+	var moveVector = get_movement_vector()
+	var wasOnFloor = is_on_floor()
 	
 	##### Two Movement methods #####
 	#Move char left right based on max speed
@@ -52,10 +22,6 @@ func moveHorizontal(moveVector, delta):
 	
 	#aply acceleration
 	velocity.x += moveVector.x * Hacceleration * delta
-	
-	##### Two Movement methods #####
-	
-	
 	
 	
 	#Check if the player's vector is on 0 to decelerate it
@@ -68,6 +34,49 @@ func moveHorizontal(moveVector, delta):
 	#Check that the acceleration doesnt exceed
 	clamp(velocity.x, -Hacceleration, Hacceleration)
 	
+	
+#Make character jump properly
+	if (Input.is_action_just_pressed("WASD_UP")):
+		moveVector.y = -1
+	else:
+		moveVector.y = 0
+	
+	if (moveVector.y < 0 && (is_on_floor() || !$CoyoteTimer.is_stopped())):
+		velocity.y = moveVector.y * jumpSpeed
+	
+	if (velocity.y < 0 and not Input.is_action_pressed("WASD_UP")):
+		#Apply enhanved gravity if player hold jump
+		velocity.y += gravity * jumpTermMultiplier *delta
+	else:
+		#Apply normal gravity on character
+		velocity.y += gravity * delta
+	
+	#move and slide ( x, y)
+	velocity = move_and_slide(velocity, Vector2.UP)
+	
+	if (wasOnFloor && !is_on_floor()):
+		$CoyoteTimer.start()
+	
+	
+
+
+
+
+
+
+#This method's made to determine whether the player is jumping
+func get_movement_vector():
+	
+	var moveVector = Vector2.ZERO
+	#Cancel out double input 
+	moveVector.x = Input.get_action_strength("WASD_RIGHT") - Input.get_action_strength("WASD_LEFT")
+	
+	if (Input.is_action_just_pressed("WASD_UP")):
+		moveVector.y = -1
+	else:
+		moveVector.y = 0
+	return moveVector
+
 
 
 
@@ -75,4 +84,19 @@ func resetMethod():
 	if(Input.is_action_just_pressed("Reset")):
 		get_tree().reload_current_scene()
 
+
+func updateAnimation():
+	var moveVec = get_movement_vector()
+	
+	if (!is_on_floor()):
+		$AnimatedSprite.play("jump")
+	elif(moveVec.x < 0):
+		$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play("run")
+	elif(moveVec.x > 0):
+		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play("run")
+	else:
+		$AnimatedSprite.play("idle")
+	
 
