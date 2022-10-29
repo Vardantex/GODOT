@@ -57,6 +57,7 @@ frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, -5 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -66,3 +67,5 @@ shape = SubResource( 2 )
 autoplay = "idle"
 anims/RESET = SubResource( 3 )
 anims/idle = SubResource( 4 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

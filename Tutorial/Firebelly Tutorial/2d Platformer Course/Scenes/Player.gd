@@ -9,8 +9,10 @@ var jumpTermMultiplier = 3
 
 func _ready() -> void:
 	pass
+	
 
 func _process(delta: float) -> void:
+	closeGame()
 	resetMethod()
 	updateAnimation()
 	var moveVector = get_movement_vector()
@@ -33,6 +35,7 @@ func _process(delta: float) -> void:
 	
 	#Check that the acceleration doesnt exceed
 	clamp(velocity.x, -Hacceleration, Hacceleration)
+	
 	
 	
 #Make character jump properly
@@ -79,6 +82,9 @@ func get_movement_vector():
 
 
 
+func closeGame():
+	if(Input.is_action_pressed("CLose_Game")):
+		get_tree().quit()
 
 func resetMethod():
 	if(Input.is_action_just_pressed("Reset")):
@@ -99,4 +105,7 @@ func updateAnimation():
 	else:
 		$AnimatedSprite.play("idle")
 	
+
+
+
 
