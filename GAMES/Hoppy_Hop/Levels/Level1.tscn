@@ -99,7 +99,7 @@ position = Vector2( 2232.48, 677.235 )
 position = Vector2( 1747.03, 707.201 )
 
 [node name="Coin15" parent="Coins" instance=ExtResource( 9 )]
-position = Vector2( 1054.81, 952.923 )
+position = Vector2( 1187.75, 899.183 )
 
 [node name="JumpPads" type="Node" parent="."]
 

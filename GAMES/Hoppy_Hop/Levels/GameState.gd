@@ -16,6 +16,7 @@ func _ready():
 	add_to_group("GameState")
 	update_GUI()
 	
+	
 	#Check if player entity is out of bounds
 	if position.y > WORLD_LIMIT:
 		end_game()
@@ -60,4 +61,8 @@ func win_game():
 		get_tree().change_scene("res://Coin_Over.tscn")
 	else:
 		get_tree().change_scene("res://Levels/Victory.tscn")
+
+
+
+
 

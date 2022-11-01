@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Recycle/ReturnButton.gd" type="Script" id=1]
+
+[node name="ReturnButton" type="Button"]
+margin_left = 17.8606
+margin_top = 12.7459
+margin_right = 61.8606
+margin_bottom = 32.7459
+text = "RETURN"
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_ReturnButton_pressed"]

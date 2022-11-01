@@ -1,0 +1,228 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=2]
+[ext_resource path="res://GFX/Environment/spikes_top.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Items/spring.png" type="Texture" id=4]
+[ext_resource path="res://Recycle/TitleContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GFX/Enemies/sun1.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Enemies/spikeMan_stand.png" type="Texture" id=7]
+[ext_resource path="res://GFX/Enemies/cloud.png" type="Texture" id=8]
+[ext_resource path="res://GFX/Items/bronze_1.png" type="Texture" id=9]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Instructions.gd" type="Script" id=11]
+[ext_resource path="res://Recycle/ReturnButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=13]
+[ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="Instructions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="TitleContainer" parent="Background" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 305.0
+margin_right = 719.0
+margin_bottom = 146.0
+
+[node name="MovementTag" type="Button" parent="Background"]
+margin_left = 314.113
+margin_top = 194.467
+margin_right = 358.113
+margin_bottom = 214.467
+text = "A / D"
+
+[node name="JumpTag" type="Button" parent="Background"]
+margin_left = 314.113
+margin_top = 226.994
+margin_right = 358.113
+margin_bottom = 246.994
+text = "W"
+
+[node name="ReturnButton" parent="Background" instance=ExtResource( 12 )]
+
+[node name="RedSprite" type="Sprite" parent="Background"]
+position = Vector2( 334.929, 273.597 )
+scale = Vector2( 0.239, 0.239 )
+texture = ExtResource( 7 )
+
+[node name="Cloud" type="Sprite" parent="Background"]
+position = Vector2( 336.399, 320.02 )
+scale = Vector2( 0.239, 0.239 )
+texture = ExtResource( 8 )
+
+[node name="Sun" type="Sprite" parent="Background"]
+position = Vector2( 334.509, 363.487 )
+scale = Vector2( 0.239, 0.239 )
+texture = ExtResource( 6 )
+
+[node name="Spike" type="Sprite" parent="Background"]
+position = Vector2( 335.631, 407.824 )
+scale = Vector2( 0.239, 0.239 )
+texture = ExtResource( 3 )
+
+[node name="JumpPad" type="Sprite" parent="Background"]
+position = Vector2( 335.037, 441.122 )
+scale = Vector2( 0.239, 0.239 )
+texture = ExtResource( 4 )
+
+[node name="Coin" type="Sprite" parent="Background"]
+position = Vector2( 334.369, 472.491 )
+scale = Vector2( 0.239, 0.239 )
+texture = ExtResource( 9 )
+
+[node name="Portal" parent="Background" instance=ExtResource( 10 )]
+position = Vector2( 334.591, 507.385 )
+scale = Vector2( 0.093, 0.2 )
+
+[node name="MovementContainer" type="VBoxContainer" parent="Background"]
+margin_left = 382.391
+margin_top = 196.194
+margin_right = 612.391
+margin_bottom = 217.194
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/MovementContainer"]
+margin_right = 230.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 1 )
+text = "- TO MOVE CHARACTER"
+
+[node name="JumpContainer" type="VBoxContainer" parent="Background"]
+margin_left = 382.391
+margin_top = 226.256
+margin_right = 612.391
+margin_bottom = 247.256
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/JumpContainer"]
+margin_right = 230.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 1 )
+text = "- TO JUMP"
+
+[node name="SpikeContainer" type="VBoxContainer" parent="Background"]
+margin_left = 381.891
+margin_top = 264.756
+margin_right = 611.891
+margin_bottom = 285.756
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/SpikeContainer"]
+margin_right = 230.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.933333, 0.0196078, 0.0196078, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- AVOID CONTACT"
+
+[node name="CloudContainer" type="VBoxContainer" parent="Background"]
+margin_left = 381.446
+margin_top = 305.737
+margin_right = 611.446
+margin_bottom = 326.737
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/CloudContainer"]
+margin_right = 320.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.933333, 0.0196078, 0.0196078, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- AVOID LIGHTNING STREAM!!!!!!!"
+
+[node name="SunContainer" type="VBoxContainer" parent="Background"]
+margin_left = 382.076
+margin_top = 352.354
+margin_right = 658.076
+margin_bottom = 373.354
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/SunContainer"]
+margin_right = 276.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.933333, 0.0196078, 0.0196078, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- AVOID CONTACT"
+
+[node name="SpikeContainer2" type="VBoxContainer" parent="Background"]
+margin_left = 382.547
+margin_top = 396.716
+margin_right = 658.547
+margin_bottom = 417.716
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/SpikeContainer2"]
+margin_right = 276.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.933333, 0.0196078, 0.0196078, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- AVOID CONTACT"
+
+[node name="JumpContainer2" type="VBoxContainer" parent="Background"]
+margin_left = 382.547
+margin_top = 429.42
+margin_right = 658.547
+margin_bottom = 450.42
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/JumpContainer2"]
+margin_right = 276.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.00392157, 0.929412, 0.113725, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- JUMP BOOST"
+
+[node name="CoinContainer" type="VBoxContainer" parent="Background"]
+margin_left = 383.215
+margin_top = 464.125
+margin_right = 659.215
+margin_bottom = 485.125
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/CoinContainer"]
+margin_right = 325.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.00392157, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- COLLECT THE DESIRED AMOUNT"
+
+[node name="GoalContainer" type="VBoxContainer" parent="Background"]
+margin_left = 383.215
+margin_top = 493.104
+margin_right = 708.215
+margin_bottom = 514.104
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/GoalContainer"]
+margin_right = 410.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.00392157, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- REACH THE GOAL WITH THE REQUIRED 
+AMOUNT OF COINS"
+
+[node name="CenterContainer" type="CenterContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.4686
+margin_top = -95.5236
+margin_right = -21.4686
+margin_bottom = -95.5236
+
+[node name="Main_Menu_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -30.588
+pitch_scale = 0.33
+script = ExtResource( 13 )

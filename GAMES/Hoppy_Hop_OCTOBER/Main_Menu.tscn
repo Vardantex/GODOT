@@ -1,0 +1,323 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://GFX/Environment/ground_snow_small.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Environment/ground_grass_small.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Environment/ground_sand_small.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Environment/ground_cake_small.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Players/bunny2_walk2.png" type="Texture" id=7]
+[ext_resource path="res://GFX/Players/bunny2_walk1.png" type="Texture" id=8]
+[ext_resource path="res://Main_Menu.gd" type="Script" id=9]
+[ext_resource path="res://Recycle/TitleContainer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=11]
+[ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=12]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="TileSet" id=3]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "TitleWalk",
+"speed": 0.9
+} ]
+
+[sub_resource type="Animation" id=5]
+resource_name = "FakePlayer_Title"
+length = 14.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 6.5, 7, 8, 9, 10, 11, 12, 13, 14 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 25.3803, 540.89 ), Vector2( 127.997, 540.89 ), Vector2( 277.078, 540.89 ), Vector2( 432.153, 540.89 ), Vector2( 584.98, 540.89 ), Vector2( 740.055, 540.89 ), Vector2( 889.885, 540.89 ), Vector2( 967.797, 540.89 ), Vector2( 946.071, 541.639 ), Vector2( 790.997, 540.89 ), Vector2( 638.17, 540.89 ), Vector2( 484.593, 540.89 ), Vector2( 331.016, 542.388 ), Vector2( 180.436, 541.639 ), Vector2( 26.1106, 543.137 ), Vector2( 25.3803, 540.89 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7, 14 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 25.3803, 540.89 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Background"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="TitleContainer" parent="Background" instance=ExtResource( 10 )]
+
+[node name="PlayContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -89.0
+margin_top = -143.0
+margin_bottom = -91.0005
+rect_scale = Vector2( 2, 2 )
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Background/PlayContainer"]
+margin_top = 12.0
+margin_right = 89.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+
+[node name="LevelContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -109.146
+margin_top = -52.5613
+margin_right = -0.146362
+margin_bottom = -0.561279
+rect_scale = Vector2( 2, 2 )
+alignment = 1
+
+[node name="LevelButton" type="Button" parent="Background/LevelContainer"]
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+text = "Level Select"
+
+[node name="InstructionContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.666
+margin_top = 25.5538
+margin_right = -0.665894
+margin_bottom = 77.5538
+rect_scale = Vector2( 2, 2 )
+alignment = 1
+
+[node name="InstructionButton" type="Button" parent="Background/InstructionContainer"]
+margin_top = 12.0
+margin_right = 111.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+text = "How to Play"
+
+[node name="QuitContainer" type="VBoxContainer" parent="Background"]
+margin_left = 424.0
+margin_top = 407.0
+margin_right = 513.0
+margin_bottom = 459.0
+rect_scale = Vector2( 2, 2 )
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="Background/QuitContainer"]
+margin_top = 12.0
+margin_right = 88.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+format = 1
+
+[node name="PlatformTiles" type="Node" parent="."]
+
+[node name="Pink" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 25.7982, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Pink2" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 77.171, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Pink3" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 127.571, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Pink4" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 177.971, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Pink5" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 228.865, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Green" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 279.623, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="Green2" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 330.462, 586.433 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="Green3" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 381.3, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="Green4" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 432.139, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="Green5" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 483.196, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="Yellow" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 534.603, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Yellow2" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 585.63, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Yellow3" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 636.972, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Yellow4" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 687.684, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Yellow5" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 739.026, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Cyan" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 789.607, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Cyan2" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 840.34, 585.838 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Cyan3" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 891.073, 585.602 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Cyan4" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 941.807, 585.602 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Cyan5" type="Sprite" parent="PlatformTiles"]
+position = Vector2( 993.72, 586.782 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 25.3803, 540.89 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 4 )
+animation = "TitleWalk"
+playing = true
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FakePlayer_Title"
+anims/FakePlayer_Title = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Main_Menu_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -9.772
+pitch_scale = 0.75
+script = ExtResource( 11 )
+
+[connection signal="pressed" from="Background/PlayContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Background/LevelContainer/LevelButton" to="." method="_on_LevelButton_pressed"]
+[connection signal="pressed" from="Background/InstructionContainer/InstructionButton" to="." method="_on_InstructionButton_pressed"]
+[connection signal="pressed" from="Background/QuitContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -1,0 +1,237 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://NPC/Spikeman.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/GameState.gd" type="Script" id=4]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/Cloud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=9]
+[ext_resource path="res://SFX/05 - borat (prod. Logic).mp3" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "MoveMap"
+length = 6.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap:tile_set")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TileMap:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spikeman:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1580, 435 ), Vector2( 1992.45, 433 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spikeman:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1580, 435 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "MoveMap"
+length = 6.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap:tile_set")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TileMap:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="Level4" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 58, 390 )
+
+[node name="BaseMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 589818, 6, 0, 524288, 6, 0, 524294, 6, 0, 524300, 6, 0, 524323, 6, 0, 1310738, 6, 0, 1310744, 6, 0, 1310750, 6, 0, 1376268, 6, 0 )
+
+[node name="MoveMap" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveMap"]
+autoplay = "MoveMap"
+anims/MoveMap = SubResource( 1 )
+anims/RESET = SubResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="MoveMap"]
+tile_set = ExtResource( 1 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 524308, 4, 0 )
+
+[node name="Spikeman" parent="MoveMap" instance=ExtResource( 2 )]
+position = Vector2( 1580, 435 )
+
+[node name="MoveMap2" type="Node2D" parent="."]
+position = Vector2( 479, 424 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveMap2"]
+autoplay = "MoveMap"
+anims/MoveMap = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="MoveMap2"]
+tile_set = ExtResource( 1 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 524308, 4, 0 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Cloud" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 566, -352 )
+
+[node name="Spikeman" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 2079, 1194 )
+
+[node name="Spikeman2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1632, 1194 )
+
+[node name="Coin" type="Node" parent="."]
+
+[node name="Coin" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( -362, 409 )
+
+[node name="Coin2" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( -357, 162 )
+
+[node name="Coin3" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( -485, 466 )
+
+[node name="Coin4" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 238, 143 )
+
+[node name="Coin5" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 557, 133 )
+
+[node name="Coin6" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 866, 128 )
+
+[node name="Coin7" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 1223, 470 )
+
+[node name="Coin8" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 1532, 460 )
+
+[node name="Coin9" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 1870, 460 )
+
+[node name="Coin10" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 2193, 446 )
+
+[node name="Coin11" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 2593, 451 )
+
+[node name="Coin12" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 2664, 598 )
+
+[node name="Coin13" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 2198, 741 )
+
+[node name="Coin14" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 1765, 1212 )
+
+[node name="Coin15" parent="Coin" instance=ExtResource( 8 )]
+position = Vector2( 961, 1255 )
+
+[node name="GUI" parent="." instance=ExtResource( 6 )]
+
+[node name="Portal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 566, 1470 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+pitch_scale = 0.56
+autoplay = true
+script = ExtResource( 9 )

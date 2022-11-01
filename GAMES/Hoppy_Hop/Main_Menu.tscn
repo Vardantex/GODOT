@@ -302,6 +302,7 @@ position = Vector2( 25.3803, 540.89 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 4 )
 animation = "TitleWalk"
+frame = 1
 playing = true
 flip_h = true
 
