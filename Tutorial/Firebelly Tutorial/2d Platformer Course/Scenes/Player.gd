@@ -1,20 +1,45 @@
 extends KinematicBody2D
 
+enum State {NORMAL, DASHING}
+
 var gravity = 900 
 var velocity = Vector2.ZERO
 var maxHSpeed = 200
 var Hacceleration = 400
 var jumpSpeed = 300
 var jumpTermMultiplier = 3
+var currentState = State.NORMAL
+var maxDashSpeed = 500
+var minDashSpeed = 200
+var isStateNew = true
 
 func _ready() -> void:
 	pass
 	
 
+
+func change_state(newState):
+	currentState = newState
+	#Reset isStateNew
+	isStateNew = true
+
 func _process(delta: float) -> void:
+	
+	match currentState:
+		State.NORMAL:
+			_process_normal(delta)
+		State.DASHING:
+			_process_dash(delta)
+	isStateNew = false
+	
 	closeGame()
 	resetMethod()
 	updateAnimation()
+	
+	
+
+#This custom process function will handle all the movement for customization
+func _process_normal(delta):
 	var moveVector = get_movement_vector()
 	var wasOnFloor = is_on_floor()
 	
@@ -60,11 +85,33 @@ func _process(delta: float) -> void:
 	if (wasOnFloor && !is_on_floor()):
 		$CoyoteTimer.start()
 	
+	if (Input.is_action_just_pressed("DASH")):
+		call_deferred("change_state", State.DASHING)
 	
 
-
-
-
+#This custom process function will handle all the movement for dashing
+func _process_dash(delta):
+	#Apply the dash modifier when state is new
+	if (isStateNew):
+		$AnimatedSprite.play("jump")
+		var moveVector = get_movement_vector()
+		var velocityMod = 1 
+		if (velocity.x != 0):
+			velocityMod = sign(moveVector.x)
+		else:
+			#whichever the char is facing
+			velocityMod = 1 if $AnimatedSprite.flip_h else -1
+		
+		velocity = Vector2(maxDashSpeed * velocityMod, 0)
+	
+	velocity = move_and_slide(velocity, Vector2.UP)
+	#Decay the move speed boost
+	velocity.x = lerp(0 , velocity.x, pow(2, -20 * delta))
+	
+	#Return to normal when decay gets too low: abs fix direction limit
+	if (abs(velocity.x) < minDashSpeed):
+		call_deferred("change_state", State.NORMAL)
+	
 
 
 #This method's made to determine whether the player is jumping

@@ -1,0 +1,282 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
+[ext_resource path="res://Levels/GameState.gd" type="Script" id=2]
+[ext_resource path="res://NPC/Cloud.gd" type="Script" id=3]
+[ext_resource path="res://Items/Coin.gd" type="Script" id=4]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=5]
+[ext_resource path="res://GFX/Background/bg_layer4.png" type="Texture" id=6]
+[ext_resource path="res://Hazards/Hazards.gd" type="Script" id=7]
+[ext_resource path="res://Items/JumpPad.gd" type="Script" id=8]
+[ext_resource path="res://Player.gd" type="Script" id=9]
+[ext_resource path="res://PlayerAnimation.gd" type="Script" id=10]
+[ext_resource path="res://Items/Portal.gd" type="Script" id=11]
+[ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GFX/Players/bunny2_walk1.png" type="Texture" id=13]
+[ext_resource path="res://GFX/Players/bunny2_walk2.png" type="Texture" id=14]
+[ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=15]
+[ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=16]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=17]
+[ext_resource path="res://NPC/Spikeman.tscn" type="PackedScene" id=18]
+[ext_resource path="res://NPC/Cloud.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Recycle/TileMap.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Hazards/SpikeTop.tscn" type="PackedScene" id=22]
+[ext_resource path="res://GFX/Background/bg_layer3.png" type="Texture" id=23]
+[ext_resource path="res://GFX/Background/bg_layer2.png" type="Texture" id=24]
+[ext_resource path="res://GFX/Players/bunny2_jump.png" type="Texture" id=25]
+[ext_resource path="res://GFX/Players/bunny2_stand.png" type="Texture" id=26]
+[ext_resource path="res://GFX/Players/bunny2_ready.png" type="Texture" id=27]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=28]
+[ext_resource path="res://SFX/05 - borat (prod. Logic).mp3" type="AudioStream" id=29]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=30]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 62.0
+height = 80.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 27 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "idle",
+"speed": 0.9
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk",
+"speed": 3.5
+} ]
+
+[node name="EventLevel1" type="Node2D"]
+
+[node name="Level1" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Player" parent="Level1" instance=ExtResource( 20 )]
+position = Vector2( 63, 199 )
+collision_mask = 14
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" parent="Level1/Player" index="0"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="PlayerAnimation" parent="Level1/Player" index="1"]
+frames = SubResource( 2 )
+animation = "walk"
+frame = 1
+script = ExtResource( 10 )
+
+[node name="Camera2D" parent="Level1/Player" index="2"]
+current = true
+zoom = Vector2( 3, 3 )
+smoothing_enabled = true
+
+[node name="ParallaxBackground" parent="Level1/Player/Camera2D" index="0"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" parent="Level1/Player/Camera2D/ParallaxBackground" index="0"]
+motion_mirroring = Vector2( 2048, 1024 )
+
+[node name="TextureRect" parent="Level1/Player/Camera2D/ParallaxBackground/ParallaxLayer" index="0"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 15 )
+
+[node name="ParallaxLayer2" parent="Level1/Player/Camera2D/ParallaxBackground" index="1"]
+motion_scale = Vector2( 0.5, 1 )
+motion_offset = Vector2( 750, -750 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="TextureRect" parent="Level1/Player/Camera2D/ParallaxBackground/ParallaxLayer2" index="0"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 24 )
+
+[node name="ParallaxLayer3" parent="Level1/Player/Camera2D/ParallaxBackground" index="2"]
+motion_scale = Vector2( 0.75, 1 )
+motion_offset = Vector2( 750, -750 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="TextureRect" parent="Level1/Player/Camera2D/ParallaxBackground/ParallaxLayer3" index="0"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 23 )
+
+[node name="ParallaxLayer4" parent="Level1/Player/Camera2D/ParallaxBackground" index="3"]
+motion_offset = Vector2( 750, -750 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="TextureRect" parent="Level1/Player/Camera2D/ParallaxBackground/ParallaxLayer4" index="0"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+
+[node name="AudioStreamPlayer" parent="Level1/Player" index="3"]
+volume_db = -31.585
+
+[node name="TileMap" type="TileMap" parent="Level1" instance=ExtResource( 21 )]
+scale = Vector2( 0.498582, 0.497877 )
+tile_set = ExtResource( 16 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -262145, -1610612736, 0, 65535, -1610612736, 0, 393215, -1610612736, 0, 524320, 0, 0, 524360, 0, 0, 589850, 0, 0, 589862, 0, 0, 589870, 0, 0, 589887, 0, 0, 655360, 0, 0, 655365, 0, 0, 655370, 0, 0, 655375, 0, 0, 655380, 0, 0, 655414, 0, 0, 917588, 0, 0, 1441866, 0, 0, 1507392, 0, 0, 1572905, 0, 0, 1572911, 0, 0, 1572917, 0, 0 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="Level1"]
+stream = ExtResource( 29 )
+volume_db = -0.874
+pitch_scale = 0.56
+autoplay = true
+script = ExtResource( 5 )
+
+[node name="Hazards" type="Node" parent="Level1"]
+
+[node name="SpikeTop" type="Area2D" parent="Level1/Hazards" instance=ExtResource( 22 )]
+position = Vector2( 1429.39, 311.648 )
+collision_layer = 4
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpikeTop2" type="Area2D" parent="Level1/Hazards" instance=ExtResource( 22 )]
+position = Vector2( 1699.08, 317.641 )
+collision_layer = 4
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpikeTop3" type="Area2D" parent="Level1/Hazards" instance=ExtResource( 22 )]
+position = Vector2( 1965.78, 344.611 )
+collision_layer = 4
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpikeTop4" type="Area2D" parent="Level1/Hazards" instance=ExtResource( 22 )]
+position = Vector2( 2253.45, 311.648 )
+collision_layer = 4
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Coins" type="Node" parent="Level1"]
+
+[node name="Coin" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 347.607, 218.753 )
+script = ExtResource( 4 )
+
+[node name="Coin2" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 494.441, 221.749 )
+script = ExtResource( 4 )
+
+[node name="Coin3" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 743.16, -215.756 )
+script = ExtResource( 4 )
+
+[node name="Coin4" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 809.086, -218.753 )
+script = ExtResource( 4 )
+
+[node name="Coin5" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 1189.66, -167.81 )
+script = ExtResource( 4 )
+
+[node name="Coin6" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 1426.39, 86.9018 )
+script = ExtResource( 4 )
+
+[node name="Coin7" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 1744.03, 194.78 )
+script = ExtResource( 4 )
+
+[node name="Coin8" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 1965.78, 62.9289 )
+script = ExtResource( 4 )
+
+[node name="Coin9" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 2403.28, 137.844 )
+script = ExtResource( 4 )
+
+[node name="Coin10" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 2726.92, 353.6 )
+script = ExtResource( 4 )
+
+[node name="Coin11" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 2942.67, 248.719 )
+script = ExtResource( 4 )
+
+[node name="Coin12" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 2424.26, 566.36 )
+script = ExtResource( 4 )
+
+[node name="Coin13" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 2232.48, 677.235 )
+script = ExtResource( 4 )
+
+[node name="Coin14" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 1747.03, 707.201 )
+script = ExtResource( 4 )
+
+[node name="Coin15" type="Node2D" parent="Level1/Coins" instance=ExtResource( 17 )]
+position = Vector2( 1054.81, 952.923 )
+script = ExtResource( 4 )
+
+[node name="JumpPads" type="Node" parent="Level1"]
+
+[node name="JumpPad" type="Area2D" parent="Level1/JumpPads" instance=ExtResource( 12 )]
+position = Vector2( 776.123, 275.688 )
+collision_layer = 8
+script = ExtResource( 8 )
+
+[node name="JumpPad2" type="Area2D" parent="Level1/JumpPads" instance=ExtResource( 12 )]
+position = Vector2( 2628.03, 725.18 )
+collision_layer = 8
+script = ExtResource( 8 )
+
+[node name="JumpPad3" type="Area2D" parent="Level1/JumpPads" instance=ExtResource( 12 )]
+position = Vector2( 2381.09, 1702.88 )
+collision_layer = 8
+script = ExtResource( 8 )
+
+[node name="GUI" type="CanvasLayer" parent="Level1" groups=["GUI"] instance=ExtResource( 30 )]
+script = ExtResource( 1 )
+
+[node name="NPC" type="Node" parent="Level1"]
+
+[node name="Spikeman" type="Node2D" parent="Level1/NPC" instance=ExtResource( 18 )]
+position = Vector2( 1646.19, 683.228 )
+
+[node name="Spikeman2" type="Node2D" parent="Level1/NPC" instance=ExtResource( 18 )]
+position = Vector2( 1119.73, 173.804 )
+
+[node name="Cloud" type="Node2D" parent="Level1/NPC" instance=ExtResource( 19 )]
+position = Vector2( 1864.68, -394.817 )
+script = ExtResource( 3 )
+
+[node name="Portal" type="Node2D" parent="Level1" instance=ExtResource( 28 )]
+position = Vector2( 1144.01, 1078.49 )
+script = ExtResource( 11 )
+
+[connection signal="animate" from="Level1/Player" to="Level1/Player/PlayerAnimation" method="_on_Player_animate"]
+[connection signal="body_entered" from="Level1/Hazards/SpikeTop" to="Level1/Hazards/SpikeTop" method="_on_SpikeTop_body_entered"]
+[connection signal="body_entered" from="Level1/Hazards/SpikeTop2" to="Level1/Hazards/SpikeTop2" method="_on_SpikeTop_body_entered"]
+[connection signal="body_entered" from="Level1/Hazards/SpikeTop3" to="Level1/Hazards/SpikeTop3" method="_on_SpikeTop_body_entered"]
+[connection signal="body_entered" from="Level1/Hazards/SpikeTop4" to="Level1/Hazards/SpikeTop4" method="_on_SpikeTop_body_entered"]
+[connection signal="body_entered" from="Level1/JumpPads/JumpPad" to="Level1/JumpPads/JumpPad" method="_on_JumpPad_body_entered"]
+[connection signal="body_entered" from="Level1/JumpPads/JumpPad2" to="Level1/JumpPads/JumpPad2" method="_on_JumpPad_body_entered"]
+[connection signal="body_entered" from="Level1/JumpPads/JumpPad3" to="Level1/JumpPads/JumpPad3" method="_on_JumpPad_body_entered"]
+
+[editable path="Level1/Player"]

@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Levels/GameState.gd" type="Script" id=3]
+[ext_resource path="res://NPC/Spikeman.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/Cloud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/BGM.gd" type="Script" id=10]
+[ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=11]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource( 3 )
+level_unlock = 2
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 170, 2063 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 786452, 0, 0, 786458, 0, 0, 786464, 0, 0, 1507369, 0, 0, 1966106, 0, 0, 2097170, 0, 0, 2097187, 1, 0, 2228224, 0, 0, 2228230, 0, 0, 2228236, 0, 0, 3473388, 0, 0, 3473394, 0, 0, 3473399, 0, 0, 3473405, 0, 0 )
+
+[node name="JumpPad" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2337, 1998 )
+
+[node name="JumpPad2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2692, 1429 )
+
+[node name="JumpPad3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -194, 3245 )
+
+[node name="Coin" type="Node" parent="."]
+
+[node name="Coin" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 413, 2057 )
+
+[node name="Coin2" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( -1417, 3336 )
+
+[node name="Coin3" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( -376, 2087 )
+
+[node name="Coin4" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 1055, 1784 )
+
+[node name="Coin5" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( -420, 2282 )
+
+[node name="Coin6" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 84, 2817 )
+
+[node name="Coin7" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 1719, 1767 )
+
+[node name="Coin8" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 2317, 1749 )
+
+[node name="Coin9" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 2077, 1008 )
+
+[node name="Coin10" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 2887, 491 )
+
+[node name="Coin11" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 2383, 671 )
+
+[node name="Coin12" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 2035, 688 )
+
+[node name="Coin13" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 85, 2360 )
+
+[node name="Coin14" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 1531, 663 )
+
+[node name="Coin15" parent="Coin" instance=ExtResource( 6 )]
+position = Vector2( 1195, 926 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Spikeman" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1008, 2090 )
+
+[node name="Spikeman2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 2314, 684 )
+
+[node name="Cloud" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( -527, 1804 )
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[node name="Portal" parent="." instance=ExtResource( 9 )]
+position = Vector2( -1591, 3662 )
+
+[node name="GUI2" parent="." instance=ExtResource( 8 )]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -30.588
+pitch_scale = 0.56
+autoplay = true
+script = ExtResource( 10 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/01 - stimuclate (prod. Logic).mp3-0dc2f6c637cecd603f484c8b6397ed4c.mp3str"
+
+[deps]
+
+source_file="res://SFX/01 - stimuclate (prod. Logic).mp3"
+dest_files=[ "res://.import/01 - stimuclate (prod. Logic).mp3-0dc2f6c637cecd603f484c8b6397ed4c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -78,6 +78,11 @@ CLose_Game={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+DASH={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -85,6 +90,7 @@ CLose_Game={
 2d_physics/layer_2="Items"
 2d_physics/layer_3="Terrain"
 2d_physics/layer_4="Enemy"
+2d_physics/layer_5="EnemyGoal"
 
 [physics]
 

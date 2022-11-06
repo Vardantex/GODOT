@@ -17,7 +17,7 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3269, 136 )
+position = Vector2( 3281, 130 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -91,14 +91,11 @@ position = Vector2( 2806, 3125 )
 
 [node name="Hazards" type="Node" parent="."]
 
-[node name="SpikeTop" parent="Hazards" instance=ExtResource( 7 )]
-position = Vector2( 2944, 1184 )
-
 [node name="SpikeTop2" parent="Hazards" instance=ExtResource( 7 )]
 position = Vector2( 1593, 1631 )
 
 [node name="SpikeTop4" parent="Hazards" instance=ExtResource( 7 )]
-position = Vector2( 2143, 1638 )
+position = Vector2( 2338, 1830 )
 
 [node name="SpikeTop3" parent="Hazards" instance=ExtResource( 7 )]
 position = Vector2( 822, 604 )
