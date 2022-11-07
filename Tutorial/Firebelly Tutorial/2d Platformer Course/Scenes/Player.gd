@@ -12,6 +12,7 @@ var currentState = State.NORMAL
 var maxDashSpeed = 500
 var minDashSpeed = 200
 var isStateNew = true
+var hasDash = false
 
 func _ready() -> void:
 	pass
@@ -40,6 +41,9 @@ func _process(delta: float) -> void:
 
 #This custom process function will handle all the movement for customization
 func _process_normal(delta):
+	#Check if state changed to normal
+	if (isStateNew):
+		$DashArea/CollisionShape2D.disabled = true
 	var moveVector = get_movement_vector()
 	var wasOnFloor = is_on_floor()
 	
@@ -85,14 +89,19 @@ func _process_normal(delta):
 	if (wasOnFloor && !is_on_floor()):
 		$CoyoteTimer.start()
 	
-	if (Input.is_action_just_pressed("DASH")):
-		call_deferred("change_state", State.DASHING)
+	#Check to dash only on floor
+	if (is_on_floor()):
+		hasDash = true
 	
+	if (hasDash && Input.is_action_just_pressed("DASH")):
+		call_deferred("change_state", State.DASHING)
+		hasDash = false 
 
 #This custom process function will handle all the movement for dashing
 func _process_dash(delta):
 	#Apply the dash modifier when state is new
-	if (isStateNew):
+	if (isStateNew): #Checks if state is changed to dashing
+		$DashArea/CollisionShape2D.disabled = false
 		$AnimatedSprite.play("jump")
 		var moveVector = get_movement_vector()
 		var velocityMod = 1 
@@ -127,7 +136,9 @@ func get_movement_vector():
 		moveVector.y = 0
 	return moveVector
 
-
+#Test new controls later
+func buttonMovement():
+	pass
 
 func closeGame():
 	if(Input.is_action_pressed("CLose_Game")):
