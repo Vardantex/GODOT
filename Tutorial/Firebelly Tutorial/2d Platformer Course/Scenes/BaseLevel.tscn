@@ -9,7 +9,7 @@
 [ext_resource path="res://Scenes/BaseLevel.gd" type="Script" id=7]
 [ext_resource path="res://Other/Flag.tscn" type="PackedScene" id=8]
 
-[node name="BaseLevel" type="Node"]
+[node name="BaseLevel" type="Node" groups=["base_level"]]
 script = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -41,4 +41,4 @@ position = Vector2( -56, 72 )
 position = Vector2( 40, 72 )
 
 [node name="Flag" parent="." instance=ExtResource( 8 )]
-position = Vector2( 520, -8 )
+position = Vector2( 504, -8 )
