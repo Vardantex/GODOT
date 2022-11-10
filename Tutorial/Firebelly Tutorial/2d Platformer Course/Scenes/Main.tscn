@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Resources/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tiles/Spikes.tscn" type="PackedScene" id=5]
-[ext_resource path="res://NPC/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/EnemySpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Other/EnemyGoal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NPC/Enemy.tscn" type="PackedScene" id=8]
 
 [node name="Node" type="Node"]
 
@@ -33,14 +34,14 @@ position = Vector2( -82, 30 )
 [node name="Spikes" parent="Hazards" instance=ExtResource( 5 )]
 position = Vector2( 152, 54 )
 
-[node name="Enemy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 103, 42 )
-startDirection = 1
+[node name="EnemySpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 104, 48 )
+enemyScene = ExtResource( 8 )
 
-[node name="EnemyGoal" type="Node" parent="Enemy"]
+[node name="EnemyGoal" type="Node" parent="EnemySpawner"]
 
-[node name="EnemyGoal" parent="Enemy/EnemyGoal" instance=ExtResource( 7 )]
+[node name="EnemyGoal" parent="EnemySpawner/EnemyGoal" instance=ExtResource( 7 )]
 position = Vector2( 132, 53 )
 
-[node name="EnemyGoal2" parent="Enemy/EnemyGoal" instance=ExtResource( 7 )]
+[node name="EnemyGoal2" parent="EnemySpawner/EnemyGoal" instance=ExtResource( 7 )]
 position = Vector2( 72, 54 )
