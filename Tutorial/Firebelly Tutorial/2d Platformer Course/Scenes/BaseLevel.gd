@@ -14,18 +14,23 @@ func _ready() -> void:
 	spawnPosition = $Player.global_position
 	register_player($Player)
 	
-	#Get root of overall scene tree of coin.tscn group
+	#Get root of overall scene tree of coin.tscn group(?)
+	#Gets total coins in current scene
 	coin_total_changed(get_tree().get_nodes_in_group("coin").size())
 	
+#	totalCoins = get_tree().get_nodes_in_group("coin").size()
+	
 
+#This function updates the various coin total
 func coin_total_changed(newTotal):
 	totalCoins = newTotal
-	totalCoins = get_tree().get_nodes_in_group("coin").size()
+	emit_signal("coin_total_changed", totalCoins, collectedCoins)
+	
 
 #Create a function to collect coins
 func coin_collected():
 	collectedCoins += 1
-	print(totalCoins, collectedCoins)
+	print("Total:", totalCoins, " Collected: ", collectedCoins)
 	emit_signal("coin_total_changed", totalCoins, collectedCoins)
 
 #Listen to the player death 
