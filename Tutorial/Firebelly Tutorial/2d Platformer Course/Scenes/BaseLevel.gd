@@ -15,7 +15,7 @@ func _ready() -> void:
 	register_player($Player)
 	
 	#Get root of overall scene tree of coin.tscn group(?)
-	#Gets total coins in current scene
+	#Gets total coins in current scene: How many nodes are in this scene
 	coin_total_changed(get_tree().get_nodes_in_group("coin").size())
 	
 #	totalCoins = get_tree().get_nodes_in_group("coin").size()
