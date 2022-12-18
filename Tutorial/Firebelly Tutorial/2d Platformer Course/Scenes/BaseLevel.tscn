@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://NPC/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Resources/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Tiles/TileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Other/EnemyGoal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
@@ -15,13 +15,8 @@
 [node name="BaseLevel" type="Node" groups=["base_level"]]
 script = ExtResource( 7 )
 
-[node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -1, 0 )
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 18, 18 )
-collision_layer = 4
-format = 1
-tile_data = PoolIntArray( 27, 0, 0, 28, 0, 0, 29, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 65555, 0, 0, 65556, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 393211, 0, 0 )
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
+tile_data = PoolIntArray( 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -81.268, 71 )
@@ -31,10 +26,10 @@ position = Vector2( -81.268, 71 )
 [node name="GUI" parent="GameCamera" instance=ExtResource( 11 )]
 
 [node name="Spikes" parent="." instance=ExtResource( 6 )]
-position = Vector2( 152, 56 )
+position = Vector2( 40, 72 )
 
 [node name="Flag" parent="." instance=ExtResource( 8 )]
-position = Vector2( 504, -8 )
+position = Vector2( -152, 64 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 9 )]
 position = Vector2( -8, 56 )
@@ -51,7 +46,4 @@ position = Vector2( 40, 72 )
 [node name="CoinTest" type="Node" parent="."]
 
 [node name="Coin" parent="CoinTest" instance=ExtResource( 10 )]
-position = Vector2( 104, 48 )
-
-[node name="Coin2" parent="CoinTest" instance=ExtResource( 10 )]
-position = Vector2( 208, 16 )
+position = Vector2( -32, 64 )

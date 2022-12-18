@@ -14,4 +14,4 @@ func _ready() -> void:
 	
 
 func on_coin_total_changed(totalCoins, collectedCoins):
-	$Control/TextureRect/HBoxContainer/CoinIterate.text = str(collectedCoins, "/", totalCoins)
+	$MarginContainer/CoinIterate.text = str(collectedCoins, "/", totalCoins)

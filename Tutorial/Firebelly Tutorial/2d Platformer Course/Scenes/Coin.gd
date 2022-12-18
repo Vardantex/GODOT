@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	queue_free()  
-	var baseLevel = get_tree().get_nodes_in_group("base_level")[0]
+	var baseLevel = get_tree().get_nodes_in_group("base_level")[0] #The [0] varies on what level it is for total coins 
+	
 	baseLevel.coin_collected()
 	

@@ -30,24 +30,40 @@ margin_bottom = 12.0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/TextureRect/HBoxContainer"]
-margin_left = 71.959
-margin_top = 16.722
-margin_right = 131.959
-margin_bottom = 87.722
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 77.0
+margin_right = 137.0
+margin_bottom = 71.0
 texture = ExtResource( 2 )
 stretch_mode = 3
 
-[node name="CoinLabel" type="Label" parent="Control/TextureRect/HBoxContainer"]
-margin_left = 111.0
-margin_top = 28.0
-margin_right = 154.0
-margin_bottom = 42.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 18
+custom_constants/margin_top = -120
+custom_constants/margin_left = 269
+custom_constants/margin_bottom = 18
+
+[node name="Label" type="Label" parent="MarginContainer"]
+visible = false
+margin_left = 269.0
+margin_top = 14.0
+margin_right = 302.0
+margin_bottom = 28.0
+text = "Test"
+
+[node name="CoinLabel" type="Label" parent="MarginContainer"]
+visible = false
+margin_left = 269.0
+margin_top = 14.0
+margin_right = 312.0
+margin_bottom = 28.0
 text = "Coins: "
 
-[node name="CoinIterate" type="Label" parent="Control/TextureRect/HBoxContainer"]
-margin_left = 158.0
-margin_top = 28.0
-margin_right = 166.0
-margin_bottom = 42.0
+[node name="CoinIterate" type="Label" parent="MarginContainer"]
+margin_left = 269.0
+margin_top = 14.0
+margin_right = 302.0
+margin_bottom = 28.0
 text = "0"
