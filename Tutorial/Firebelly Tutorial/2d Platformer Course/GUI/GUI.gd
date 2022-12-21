@@ -3,6 +3,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	
+	
 	#Get a reference to the levels
 	var baseLevels = get_tree().get_nodes_in_group("base_level")
 	
@@ -15,3 +16,7 @@ func _ready() -> void:
 
 func on_coin_total_changed(totalCoins, collectedCoins):
 	$MarginContainer/CoinIterate.text = str(collectedCoins, "/", totalCoins)
+
+
+func _on_Button_pressed() -> void:
+	get_tree().reload_current_scene()

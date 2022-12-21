@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Tiles/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -9,7 +9,10 @@
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Other/Flag.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/BaseLevel.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Level2.gd" type="Script" id=10]
+[ext_resource path="res://Levels/Level3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://NPC/ManualSpawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Player/Player2.tscn" type="PackedScene" id=13]
 
 [node name="Level2" type="Node" groups=["base_level"]]
 script = ExtResource( 10 )
@@ -69,3 +72,8 @@ position = Vector2( 173, -57 )
 
 [node name="Flag" parent="." instance=ExtResource( 8 )]
 position = Vector2( 90, -99 )
+levelScene = ExtResource( 11 )
+
+[node name="ManualSpawner" parent="." instance=ExtResource( 12 )]
+position = Vector2( 15, 38 )
+enemyScene = ExtResource( 13 )

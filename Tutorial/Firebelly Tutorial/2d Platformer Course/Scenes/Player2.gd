@@ -39,6 +39,25 @@ func _process(delta: float) -> void:
 	
 	
 
+
+func deathAnimation():
+	queue_free()
+	pass
+	
+
+
+func _on_DeathArea_area_entered(area: Area2D) -> void:
+	_on_DeathTimer_timeout()
+	pass # Replace with function body.
+
+
+func _on_DeathTimer_timeout() -> void:
+	
+	deathAnimation()
+	pass # Replace with function body.
+
+
+
 #This custom process function will handle all the movement for customization
 func _process_normal(delta):
 	#Check if state changed to normal

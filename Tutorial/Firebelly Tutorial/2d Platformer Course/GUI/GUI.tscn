@@ -67,3 +67,18 @@ margin_top = 14.0
 margin_right = 302.0
 margin_bottom = 28.0
 text = "0"
+
+[node name="ResetContainer" type="MarginContainer" parent="."]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 51.0
+margin_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="ResetContainer"]
+margin_right = 48.0
+margin_bottom = 20.0
+text = "Reset"
+
+[connection signal="pressed" from="ResetContainer/Button" to="." method="_on_Button_pressed"]

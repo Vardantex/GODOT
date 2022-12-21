@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ove Melaa -Supa Powa C.mp3-be6d70e3c0b4ffb4cdbc14510873419d.mp3str"
+
+[deps]
+
+source_file="res://Assets/OST/Ove Melaa -Supa Powa C.mp3"
+dest_files=[ "res://.import/Ove Melaa -Supa Powa C.mp3-be6d70e3c0b4ffb4cdbc14510873419d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 enum State {NORMAL, DASHING}
 
+var maxPlayer = false
 var gravity = 900 
 var velocity = Vector2.ZERO
 var maxHSpeed = 200
@@ -15,6 +16,7 @@ var isStateNew = true
 var hasDash = false
 
 func _ready() -> void:
+	addPlayer()
 	pass
 	
 
@@ -37,7 +39,20 @@ func _process(delta: float) -> void:
 	resetMethod()
 	updateAnimation()
 	
+
+func deathAnimation():
+	queue_free()
+	pass
 	
+
+func addPlayer():
+	maxPlayer = true
+	
+	if(Input.is_action_pressed("Add_Player")):
+		maxPlayer = false
+		
+	
+	pass
 
 #This custom process function will handle all the movement for customization
 func _process_normal(delta):
@@ -167,3 +182,14 @@ func updateAnimation():
 
 
 
+
+
+func _on_DeathArea_area_entered(area: Area2D) -> void:
+	_on_DeathTimer_timeout()
+	pass # Replace with function body.
+
+
+func _on_DeathTimer_timeout() -> void:
+	
+	deathAnimation()
+	pass # Replace with function body.

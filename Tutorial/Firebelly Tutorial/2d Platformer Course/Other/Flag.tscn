@@ -69,6 +69,7 @@ offset = Vector2( 9.072, 0 )
 [node name="FlagAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -27 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 centered = false
 

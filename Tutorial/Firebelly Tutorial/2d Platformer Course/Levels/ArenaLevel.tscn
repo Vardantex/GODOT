@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Resources/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Other/Flag.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/MultiGameEnd.tscn" type="PackedScene" id=6]
 
 [node name="ArenaLevel" type="Node"]
-
-[node name="GameCamera" parent="." instance=ExtResource( 3 )]
-position = Vector2( -240, 85 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( -1, 0 )
@@ -15,7 +15,16 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 18, 18 )
 collision_layer = 4
 format = 1
-tile_data = PoolIntArray( -393228, 0, 0, -458741, 0, 0, -327691, 0, 0, -393206, 0, 0, -262155, 0, 0, -327670, 0, 0, -196619, 0, 0, -262134, 0, 0, -131083, 0, 0, -196598, 0, 0, -65547, 0, 0, -131062, 0, 0, -11, 0, 0, -65526, 0, 0, -65496, 0, 0, -65495, 0, 0, -65494, 0, 0, 65525, 0, 0, 10, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 131061, 0, 0, 65546, 0, 0, 196597, 0, 0, 131082, 0, 0, 262133, 0, 0, 196618, 0, 0, 327669, 0, 0, 327670, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 0, 0, 262178, 0, 0, 458776, 0, 0, 458777, 0, 0 )
+tile_data = PoolIntArray( -655369, 0, 0, -720887, 0, 0, -589833, 0, 0, -655351, 0, 0, -524297, 0, 0, -589815, 0, 0, -458761, 0, 0, -524279, 0, 0, -393225, 0, 0, -458743, 0, 0, -327688, 0, 0, -393208, 0, 0, -262152, 0, 0, -327675, 0, 0, -327674, 0, 0, -327672, 0, 0, -196616, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -131080, 0, 0, -196607, 0, 0, -196606, 0, 0, -196600, 0, 0, -65544, 0, 0, -131064, 0, 0, -8, 0, 0, -3, 0, 0, -65528, 0, 0, -65496, 0, 0, -65495, 0, 0, -65494, 0, 0, 65528, 0, 0, 8, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 131064, 0, 0, 65544, 0, 0, 196600, 0, 0, 131080, 0, 0, 262136, 0, 0, 196616, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 0, 0, 262178, 0, 0, 458776, 0, 0, 458777, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 64, 48 )
+position = Vector2( -40, 72 )
+
+[node name="Player2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 56, 72 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+
+[node name="Flag" parent="." instance=ExtResource( 5 )]
+position = Vector2( 128, -80 )
+levelScene = ExtResource( 6 )
