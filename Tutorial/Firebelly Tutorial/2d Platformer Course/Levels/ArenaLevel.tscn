@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Resources/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player/Player2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Other/Flag.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/MultiGameEnd.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/OST/Ove Melaa -Supa Powa C.mp3" type="AudioStream" id=7]
 
 [node name="ArenaLevel" type="Node"]
 
@@ -28,3 +29,8 @@ position = Vector2( 56, 72 )
 [node name="Flag" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, -80 )
 levelScene = ExtResource( 6 )
+
+[node name="OSTMULTI" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.199
+autoplay = true

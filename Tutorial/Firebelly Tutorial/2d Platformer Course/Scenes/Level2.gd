@@ -13,12 +13,18 @@ var totalCoins = 0
 var collectedCoins = 0
 
 
+func _process(delta: float) -> void:
+	
+#	if (Input.is_action_pressed))
+	pass
+
 func _ready() -> void:
 	#Set spawn where player is in the Scene
 #	spawnPosition = $Player.global_position
 	register_player($Player)
 	
 	$P1Spawner.spawn_enemy()
+	
 	
 	#Get root of overall scene tree of coin.tscn group(?)
 	#Gets total coins in current scene: How many nodes are in this scene

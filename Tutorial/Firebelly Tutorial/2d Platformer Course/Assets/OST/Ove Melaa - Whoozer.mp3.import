@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ove Melaa - Whoozer.mp3-999b9ec955986456e118670486ce3281.mp3str"
+
+[deps]
+
+source_file="res://Assets/OST/Ove Melaa - Whoozer.mp3"
+dest_files=[ "res://.import/Ove Melaa - Whoozer.mp3-999b9ec955986456e118670486ce3281.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ove Melaa - Tube Ambient Loop.ogg-a6f3a3829451461aacd97f20d0ab6874.oggstr"
+
+[deps]
+
+source_file="res://Assets/OST/Ove Melaa - Tube Ambient Loop.ogg"
+dest_files=[ "res://.import/Ove Melaa - Tube Ambient Loop.ogg-a6f3a3829451461aacd97f20d0ab6874.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

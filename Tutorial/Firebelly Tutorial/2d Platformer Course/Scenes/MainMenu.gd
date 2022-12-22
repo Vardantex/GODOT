@@ -33,3 +33,8 @@ func _on_SourcesButton_pressed() -> void:
 	get_tree().change_scene("res://Scenes/Credits.tscn")
 	
 	pass # Replace with function body.
+
+
+func _on_VoteButton_pressed() -> void:
+	OS.shell_open("https://strawpoll.com/polls/1MnwvepXjy7")
+	pass # Replace with function body.

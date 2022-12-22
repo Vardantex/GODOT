@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/OST/Ove Melaa - Tube Ambient Loop.ogg" type="AudioStream" id=2]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -82,21 +83,42 @@ margin_right = 188.0
 margin_bottom = 20.0
 text = "Credits"
 
-[node name="QuitContainer2" type="CenterContainer" parent="."]
+[node name="QuitContainer" type="CenterContainer" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 62.0
 margin_bottom = 82.0
 
-[node name="QuitButton" type="Button" parent="QuitContainer2"]
+[node name="QuitButton" type="Button" parent="QuitContainer"]
 margin_left = 140.0
 margin_right = 180.0
 margin_bottom = 20.0
 text = "Quit"
 
+[node name="VoteContainer" type="CenterContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 128.0
+margin_top = -82.0
+margin_right = 128.0
+margin_bottom = -62.0
+
+[node name="VoteButton" type="Button" parent="VoteContainer"]
+margin_left = 139.0
+margin_right = 180.0
+margin_bottom = 20.0
+text = "Vote"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.199
+autoplay = true
+
 [connection signal="pressed" from="SingleContainer/SingleButton" to="." method="_on_SingleButton_pressed"]
 [connection signal="pressed" from="MultiContainer/MultiButton" to="." method="_on_MultiButton_pressed"]
 [connection signal="pressed" from="InstructionContainer/InstructButton" to="." method="_on_InstructButton_pressed"]
 [connection signal="pressed" from="CreditContainer/SourcesButton" to="." method="_on_SourcesButton_pressed"]
-[connection signal="pressed" from="QuitContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="QuitContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="VoteContainer/VoteButton" to="." method="_on_VoteButton_pressed"]

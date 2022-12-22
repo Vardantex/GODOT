@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Credits.gd" type="Script" id=1]
+[ext_resource path="res://Assets/OST/Ove Melaa - Whoozer.mp3" type="AudioStream" id=2]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -31,10 +32,10 @@ margin_right = 219.0
 margin_bottom = 86.0
 
 [node name="Font" type="Label" parent="CenterContainer2"]
-visible = false
-margin_right = 211.0
-margin_bottom = 14.0
-text = "Font: joebrogers.itch.io/bitpotion"
+margin_right = 276.0
+margin_bottom = 31.0
+text = "Music: Written and produced by Ove Melaa
+ (Omsofware@hotmail.com)"
 
 [node name="Return Container" type="CenterContainer" parent="."]
 margin_left = 8.0
@@ -46,5 +47,10 @@ margin_top = 10.0
 margin_right = 54.0
 margin_bottom = 30.0
 text = "Return"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.199
+autoplay = true
 
 [connection signal="pressed" from="Return Container/ReturnButton" to="." method="_on_ReturnButton_pressed"]
