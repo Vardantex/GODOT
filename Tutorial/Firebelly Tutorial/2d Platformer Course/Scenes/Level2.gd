@@ -2,6 +2,9 @@ extends Node
 
 signal coin_total_changed
 
+#export (PackedScene) var levelCompleteScene
+
+
 var playerOneNode = null
 var playerTwoNode = null
 
