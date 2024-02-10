@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+
+signal died
+
+var playerDeathScene = preload("res://Player/PlayerDeath.tscn")
+
 enum State {NORMAL, DASHING}
 
 var maxPlayer = false
@@ -185,9 +190,19 @@ func updateAnimation():
 
 
 func _on_DeathArea_area_entered(area: Area2D) -> void:
-	_on_DeathTimer_timeout()
+#	_on_DeathTimer_timeout()
+	call_deferred("kill")
 	pass # Replace with function body.
 
+func kill():
+	var playerDeathInstance = playerDeathScene.instance()
+	#Add instance below the player node 
+	get_parent().add_child_below_node(self, playerDeathInstance)
+	#Move death node to player location
+	playerDeathInstance.global_position = global_position
+	playerDeathInstance.velocity = velocity
+	emit_signal("died")
+	
 
 func _on_DeathTimer_timeout() -> void:
 	
