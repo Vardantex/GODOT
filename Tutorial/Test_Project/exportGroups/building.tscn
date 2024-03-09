@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://o15hw4wk5kja"]
+
+[ext_resource type="Script" path="res://exportGroups/building.gd" id="1_bu2m3"]
+
+[node name="Building" type="Node2D"]
+
+[node name="Sacket" type="Node2D" parent="."]
+script = ExtResource("1_bu2m3")
+priority = 1
+
+[node name="Bond" type="Node2D" parent="."]
+script = ExtResource("1_bu2m3")
+priority = 2

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr4l7veynpfsd"]
+
+[ext_resource type="Texture2D" uid="uid://b5ly66x3pwnma" path="res://icon.svg" id="1_3sngm"]
+[ext_resource type="Script" path="res://player.gd" id="1_l6qfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhq2f"]
+size = Vector2(58, 58)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_l6qfp")
+speed = 100
+boost_factor = 10
+boost_color = Color(0.890196, 0.596078, 0.964706, 1)
+boost_time = 10.7
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nhq2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3sngm")
